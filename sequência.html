@@ -1,0 +1,78 @@
+<div class="pagination">
+  <button id="prevBtn" aria-label="Página anterior">← Anterior</button>
+  <span id="pageInfo">Página 1 de 3</span>
+  <button id="nextBtn" aria-label="Próxima página">Próximo →</button>
+</div>
+
+<style>
+  .pagination {
+    margin: 2rem auto;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+  }
+  .pagination button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #81c784, #66bb6a);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .pagination button:disabled {
+    background: #a5d6a7;
+    cursor: not-allowed;
+  }
+  .pagination button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #66bb6a, #4caf50);
+  }
+  #pageInfo {
+    font-weight: 600;
+    color: #2e7d32;
+  }
+</style>
+
+<script>
+  // Defina as URLs das páginas do site na ordem
+  const pages = [
+    'index.html',
+    'sobre.html',
+    'contato.html'
+  ];
+
+  // Descobre em qual página estamos pelo nome do arquivo
+  const currentPage = window.location.pathname.split('/').pop();
+
+  let currentIndex = pages.indexOf(currentPage);
+  if (currentIndex === -1) currentIndex = 0; // fallback para primeira página
+
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const pageInfo = document.getElementById('pageInfo');
+
+  function updateNavigation() {
+    pageInfo.textContent = `Página ${currentIndex + 1} de ${pages.length}`;
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === pages.length - 1;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      window.location.href = pages[currentIndex];
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < pages.length - 1) {
+      currentIndex++;
+      window.location.href = pages[currentIndex];
+    }
+  });
+
+  updateNavigation();
+</script>

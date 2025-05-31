@@ -100,3 +100,29 @@ footer a:hover {
   height: 10px;
   display: block;
 }
+.intro .icon {
+  font-size: 2.5em; /* Tamanho inicial da flor */
+  opacity: 0;
+  animation: moveFlor 5s ease-in-out forwards;
+}
+
+@keyframes moveFlor {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px) scale(0.5) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(50px) scale(1.1) rotate(10deg);
+  }
+  60% {
+    transform: translateX(-20px) scale(1) rotate(-10deg);
+  }
+  80% {
+    transform: translateX(10px) scale(1) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotate(0deg);
+  }
+}

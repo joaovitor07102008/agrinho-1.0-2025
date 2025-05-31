@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Recuperar Senha</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f0f4f8;
+    padding: 20px;
+  }
+
+  /* Animação chamativa: bounce + glow + scale + fade */
+  @keyframes fancyEntrance {
+    0% {
+      opacity: 0;
+      transform: scale(0.5) translateY(150px);
+      box-shadow: 0 0 0 rgba(97, 218, 251, 0);
+      filter: blur(15px);
+    }
+    40% {
+      opacity: 1;
+      transform: scale(1.1) translateY(-20px);
+      box-shadow: 0 0 20px 5px #39c7ff;
+      filter: blur(0);
+    }
+    60% {
+      transform: scale(0.95) translateY(10px);
+      box-shadow: 0 0 30px 8px #61dafb;
+    }
+    80% {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 0 25px 5px #39c7ff;
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      box-shadow: 0 0 15px 3px #61dafb;
+      filter: blur(0);
+    }
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px 35px;
+    border-radius: 15px;
+    width: 350px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    text-align: center;
+
+    animation: fancyEntrance 1.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 2.2em;
+    margin-bottom: 12px;
+    color: #61dafb;
+    text-shadow: 0 0 8px #39c7ff;
+  }
+  p.instruction {
+    font-size: 1em;
+    margin-bottom: 25px;
+    color: #cce7ff;
+    text-shadow: 0 0 5px #2a82b7;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  label {
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    color: #b0d9ff;
+    text-align: left;
+  }
+  input[type="email"] {
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: #f0f4f8;
+    font-size: 16px;
+    outline: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    text-shadow: 0 0 3px #1e3c72;
+  }
+  input::placeholder {
+    color: #9ccfff;
+    font-style: italic;
+  }
+  input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 8px #39c7ff;
+  }
+  button {
+    margin-top: 12px;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #00b4f1, #0077b6);
+    color: #f0f4f8;
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.6);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    text-shadow: 0 0 5px #004080;
+  }
+  button:hover {
+    background: linear-gradient(135deg, #0077b6, #005f86);
+    box-shadow: 0 8px 25px rgba(0, 94, 139, 0.8);
+  }
+  .back-link {
+    margin-top: 20px;
+    font-size: 0.9em;
+  }
+  .back-link a {
+    color: #61dafb;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    text-shadow: 0 0 4px #39c7ff;
+  }
+  .back-link a:hover,
+  .back-link a:focus {
+    color: #9edfff;
+    text-decoration: underline;
+    outline: none;
+  }
+  @media (max-width: 400px) {
+    .container {
+      width: 100%;
+      padding: 30px 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <main class="container" role="main" aria-label="Recuperar senha">
+    <h1>Recuperar Senha</h1>
+    <p class="instruction">Digite seu e-mail cadastrado para receber as instruções de recuperação.</p>
+    <form action="#" method="POST" novalidate>
+      <label for="email">E-mail</label>
+      <input id="email" name="email" type="email" placeholder="seu@email.com" required />
+      <button type="submit" aria-label="Enviar instruções para recuperação de senha">Enviar</button>
+    </form>
+    <div class="back-link">
+      <a href="index.html" aria-label="Voltar para a página de login">&larr; Voltar ao login</a>
+    </div>
+  </main>
+
+</body>
+</html>

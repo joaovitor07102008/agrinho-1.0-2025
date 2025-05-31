@@ -1,86 +1,293 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #4b6cb7, #182848);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: #fff;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+<style>
+  /* Reset básico */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f0f4f8;
+    overflow: hidden;
+    padding: 20px;
+  }
+  .intro {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #122a54, #1e3c72);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    animation: fadeOut 2.2s ease forwards;
+  }
+  .intro .icon {
+    font-size: 3em;
+    color: #61dafb;
+    animation: slideFloat 2.2s ease forwards;
+  }
+  @keyframes slideFloat {
+    0% {
+      opacity: 0;
+      transform: translateX(-120px) translateY(20px);
     }
+    50% {
+      opacity: 1;
+      transform: translateX(120px) translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) translateY(0);
+    }
+  }
+  @keyframes fadeOut {
+    0%, 80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+  }
+  .login-container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px 35px;
+    border-radius: 15px;
+    width: 350px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    animation: fadeInLogin 1.5s ease forwards;
+    animation-delay: 2.2s;
+    opacity: 0;
+    z-index: 10;
+  }
+  @keyframes fadeInLogin {
+    to {opacity: 1;}
+  }
+  .login-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 2.2em;
+    margin-bottom: 8px;
+    color: #61dafb;
+    text-align: center;
+  }
+  .login-container p.welcome {
+    font-size: 1em;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #cce7ff;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  label {
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    color: #b0d9ff;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: #f0f4f8;
+    font-size: 16px;
+    outline: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  input::placeholder {
+    color: #9ccfff;
+    font-style: italic;
+  }
+  input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 8px #61dafb;
+  }
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #61dafb;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .checkbox-group label {
+    font-size: 0.9em;
+    color: #bbe3ff;
+    cursor: pointer;
+  }
+  .forgot-password {
+    text-align: right;
+    font-size: 0.85em;
+  }
+  .forgot-password a {
+    color: #61dafb;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+  .forgot-password a:hover,
+  .forgot-password a:focus {
+    color: #9edfff;
+    text-decoration: underline;
+    outline: none;
+  }
+  button {
+    margin-top: 12px;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #00b4f1, #0077b6);
+    color: #f0f4f8;
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.6);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  button:hover {
+    background: linear-gradient(135deg, #0077b6, #005f86);
+    box-shadow: 0 8px 25px rgba(0, 94, 139, 0.8);
+  }
+
+  /* Modal - fundo */
+  .modal-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  .modal-bg.active {
+    display: flex;
+  }
+  /* Modal conteúdo */
+  .modal {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 30px 25px;
+    border-radius: 15px;
+    width: 320px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: #f0f4f8;
+    text-align: center;
+    position: relative;
+  }
+  .modal h2 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 15px;
+    color: #61dafb;
+  }
+  .modal p {
+    font-size: 0.95em;
+    margin-bottom: 25px;
+    color: #cce7ff;
+  }
+  .modal input[type="email"] {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .modal button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #00b4f1, #0077b6);
+    color: #f0f4f8;
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.6);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .modal button:hover {
+    background: linear-gradient(135deg, #0077b6, #005f86);
+    box-shadow: 0 8px 25px rgba(0, 94, 139, 0.8);
+  }
+  .modal .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5em;
+    color: #61dafb;
+    cursor: pointer;
+    font-weight: 700;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  /* Responsividade */
+  @media (max-width: 400px) {
     .login-container {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 40px 30px;
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-      width: 320px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      text-align: center;
-      box-sizing: border-box;
-    }
-    .login-container h2 {
-      margin-bottom: 24px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .login-container form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px; /* Espaçamento consistente entre os campos */
-    }
-    .login-container input[type="text"],
-    .login-container input[type="password"] {
       width: 100%;
-      padding: 12px 15px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.2);
-      color: #fff;
-      font-size: 16px;
-      outline: none;
-      transition: background 0.3s ease;
-      box-sizing: border-box; /* Garante que padding e border não ultrapassem a largura */
+      padding: 30px 20px;
     }
-    .login-container input::placeholder {
-      color: #ddd;
+    .modal {
+      width: 90%;
+      padding: 20px;
     }
-    .login-container input:focus {
-      background: rgba(255, 255, 255, 0.35);
-    }
-    .login-container button {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background-color: #4b6cb7;
-      color: white;
-      font-weight: 700;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .login-container button:hover {
-      background-color: #182848;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <div class="login-container" role="main" aria-label="Formulário de login">
-    <h2>Entrar</h2>
-    <form action="alternativas.html" method="GET">
-      <input type="text" id="username" name="username" placeholder="Usuário" required />
-      <input type="password" id="password" name="password" placeholder="Senha" required />
-      <button type="submit">Entrar</button>
-    </form>
+  <div class="intro" role="banner" aria-live="polite">
+    <div class="icon" aria-hidden="true">🌿</div>
   </div>
 
-</body>
-</html>
+  <main class="login-container" role="main" aria-label="Formulário de login">
+    <h1>Bem-vindo!</h1>
+    <p class="welcome">Entre para aproveitar todos os benefícios exclusivos.</p>
+    <form action="alternativas.html" method="GET" autocomplete="off" novalidate>
+      <label for="username">Usuário</label>
+      <input id="username" name="username" type="text" placeholder="Digite seu usuário" required />
+
+      <label for="password">Senha</label>
+      <input id="password" name="password" type="password" placeholder="Digite sua senha" required />
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="remember" name="remember" />
+        <label for="remember">Lembrar-me</label>
+      </div>
+
+      <div class="forgot-password">
+        <a href="recuperar.html" id="openModal">Esqueci minha senha</a>
+      </div>
+
+      <button type="submit" aria-label="Entrar no sistema">Entrar</button>
+    </form>
+  </main>
+
+  <!-- Modal de recuperação de senha -->
+  <div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="modal">
+      <button class="close-btn" id="closeModal" aria-label="Fechar">&times;</button>
+      <h

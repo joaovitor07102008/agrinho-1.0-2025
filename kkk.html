@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal Pro Sustentável</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; background-color: #f9f9f9; }
+    a { text-decoration: none; color: inherit; }
+
+    header {
+      background: #1a2980; color: white; padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    nav a { margin-left: 1.5rem; font-weight: 700; color: white; }
+    nav a:hover { color: #ffcc00; }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1556740749-887f6717d7e4') center/cover no-repeat;
+      padding: 6rem 2rem; text-align: center; color: white;
+    }
+    .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.3rem; margin-bottom: 2rem; }
+    .hero a {
+      background: #ffcc00; padding: 1rem 2rem; border-radius: 30px;
+      font-weight: 700; transition: transform 0.3s;
+    }
+    .hero a:hover { transform: scale(1.1); }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; padding: 2rem; }
+    .card {
+      background: #fff; padding: 1.5rem; text-align: center; border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-8px); }
+    .card-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+    footer {
+      background: #111; color: #eee; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+    }
+    .social-icons a { margin-left: 1rem; width: 30px; height: 30px; background-size: cover; display: inline-block; }
+    .profile { background-image: url('https://cdn-icons-png.flaticon.com/512/847/847969.png'); }
+    .whatsapp { background-image: url('https://cdn-icons-png.flaticon.com/512/733/733585.png'); }
+    .instagram { background-image: url('https://cdn-icons-png.flaticon.com/512/733/733558.png'); }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>🌿 Portal Sustentável</h2>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="galeria.html">Galeria</a>
+    <a href="dicas.html">Dicas</a>
+    <a href="sobre.html">Sobre Mim</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Bem-vindo ao Portal Sustentável</h1>
+  <p>Descubra ideias, dicas e práticas para um mundo mais verde.</p>
+  <a href="dicas.html">Veja as Dicas</a>
+</section>
+
+<section class="cards">
+  <a href="galeria.html" class="card">
+    <div class="card-icon">🖼️</div>
+    <h3>Galeria</h3>
+    <p>Fotos de projetos e inspirações.</p>
+  </a>
+  <a href="dicas.html" class="card">
+    <div class="card-icon">💡</div>
+    <h3>Dicas</h3>
+    <p>Dicas sustentáveis para o dia a dia.</p>
+  </a>
+  <a href="sobre.html" class="card">
+    <div class="card-icon">👤</div>
+    <h3>Sobre Mim</h3>
+    <p>Conheça mais sobre o criador do site.</p>
+  </a>
+</section>
+
+<footer>
+  <div>&copy; 2025 Portal Sustentável</div>
+  <div class="social-icons">
+    <a href="#" class="profile" title="Perfil"></a>
+    <a href="https://api.whatsapp.com/" class="whatsapp" target="_blank" title="WhatsApp"></a>
+    <a href="https://www.instagram.com/" class="instagram" target="_blank" title="Instagram"></a>
+  </div>
+</footer>
+
+</body>
+</html>
+🌟 Agora crie as páginas separad

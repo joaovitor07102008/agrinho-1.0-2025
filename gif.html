@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Sustentável - O Futuro é Agora!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    header h1 { font-size: 2rem; }
+
+    /* Botão do menu */
+    .menu-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* Lista do menu oculta por padrão */
+    .menu-list {
+      position: absolute;
+      top: 60px;
+      right: 2rem;
+      background: #1e3c72;
+      border-radius: 10px;
+      list-style: none;
+      padding: 1.5rem 2rem;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      min-width: 220px;
+      font-size: 1.1rem;
+    }
+    .menu-list li {
+      margin-bottom: 0.5rem;
+    }
+    .menu-list li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .menu-list li a:hover {
+      color: #ffcc00;
+    }
+    .menu-list.show {
+      display: block;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1593642532973-d31b6557fa68') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+      animation: fadeIn 2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .hero h2 { font-size: 3rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; }
+    .hero a {
+      background: #ffcc00;
+      color: #333;
+      padding: 1rem 2.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: background 0.3s, transform 0.3s;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .hero a:hover {
+      background: #f0b400;
+      transform: scale(1.1);
+    }
+
+    .sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 4rem 2rem;
+      background: #fff;
+    }
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 2rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.7rem;
+      color: #1e3c72;
+    }
+    .card p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .card a {
+      display: inline-block;
+      background: #4b6cb7;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .card a:hover {
+      background: #3553a4;
+    }
+
+    .cta-section {
+      background: #f5f5f5;
+      color: #333;
+      text-align: center;
+      padding: 4rem 2rem;
+      border-top: 4px solid #4b6cb7;
+    }
+    .cta-section h3 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #1e3c72;
+    }
+    .cta-section p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    .cta-section a {
+      background: #4b6cb7;
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: background 0.3s;
+    }
+    .cta-section a:hover {
+      background: #3553a4;
+    }
+
+    .feedback-section {
+      background: #f9f9f9;
+      padding: 4rem 2rem;
+      text-align: center;
+      border-top: 4px solid #4b6cb7;
+    }
+    .feedback-section h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #1e3c72;
+    }
+    .feedback-section p {
+      margin-bottom: 1.5rem;
+      color: #555;
+      font-size: 1.1rem;
+    }
+    .feedback-section textarea {
+      width: 100%;
+      max-width: 700px;
+      padding: 1.2rem;
+      border-radius: 12px;
+      border: 1.5px solid #ccc;
+      resize: vertical;
+      font-size: 1.1rem;
+      min-height: 140px;
+    }
+    .feedback-section form {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .feedback-section form button {
+      background: #4b6cb7;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .feedback-section form button:hover {
+      background: #3553a4;
+    }
+
+    footer {
+      background-color: #2a3b4d;
+      color: #d1d9e6;
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 1.1rem;
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+      border-radius: 12px 12px 0 0;
+    }
+    .footer-left {
+      flex: 1 1 300px;
+    }
+    .footer-right {
+      display: flex;
+      gap: 1.5rem;
+      flex: 0 1 auto;
+    }
+    .icon {
+      width: 50px;
+      height: 50px;
+      background-size: cover;
+      border-radius: 50%;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .icon:hover {
+      transform: scale(1.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .whatsapp {
+      background-image: url('https://cdn-icons-png.flaticon.com/512/733/733585.png');
+    }
+    .instagram {
+      background-image: url('https://cdn-icons-png.flaticon.com/512/733/733558.png');
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 2.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      .footer-right {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌿 Portal Sustentável</h1>
+  <button class="menu-btn" onclick="toggleMenu()" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">☰</button>
+  <ul class="menu-list" id="menu">
+  <li><a href="#inicio">Início</a></li>
+  <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+  <li><a href="#contato">Contato</a></li>
+  <li><a href="#feedback">Feedback</a></li>
+  <li><a href="#projetos">Projetos</a></li> <!-- Novo -->
+  <li><a href="#sobre">Sobre</a></li>       <!-- Novo -->
+</ul>
+
+</header>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const btn = document.querySelector('.menu-btn');
+  menu.classList.toggle('show');
+  btn.setAttribute('aria-expanded', menu.classList.contains('show'));
+}
+
+document.addEventListener('click', function(event) {
+  const menu = document.getElementById('menu');
+  const btn = document.querySelector('.menu-btn');
+  if (!menu.contains(event.target) && !btn.contains(event.target)) {
+    menu.classList.remove('show');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// Fecha o menu e destaca a seção ao clicar em um link
+document.querySelectorAll('.menu-list a').forEach(link => {
+  link.addEventListener('click', e => {
+    const menu = document.getElementById('menu');
+    const btn = document.querySelector('.menu-btn');
+    menu.classList.remove('show');
+    btn.setAttribute('aria-expanded', 'false');
+
+    // Destacar a seção alvo
+    const targetId = link.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      e.preventDefault(); // Previne o comportamento padrão para controlar o scroll
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+
+      targetElement.classList.add('highlight');
+      setTimeout(() => {
+        targetElement.classList.remove('highlight');
+      }, 2000); // Destaca por 2 segundos
+    }
+  });
+});
+</script>
+
+<style>
+/* Adicione esta parte ao seu CSS existente */
+.highlight {
+  outline: 4px solid #ffcc00;
+  outline-offset: 4px;
+  transition: outline 0.5s;
+}
+</style>
+
+<!-- Seções com IDs para o menu funcionar -->
+<section id="inicio" class="hero">
+  <h2>Transforme o mundo com sustentabilidade</h2>
+  <p>Descubra como pequenas atitudes podem mudar o planeta. Junte-se a nós nesta jornada!</p>
+  <a href="#sustentabilidade">Saiba mais</a>
+</section>
+
+<section id="sustentabilidade" class="sections">
+  <div class="card">
+    <h3>🌱 Diferença</h3>
+    <p>Transforme sua cidade com ideias criativas e sustentáveis.</p>
+    <a href="#">Ver mais</a>
+  </div>
+  <div class="card">
+    <h3>🏡 Práticas Rurais</h3>
+    <p>Descubra como o campo pode se tornar um modelo de sustentabilidade.</p>
+    <a href="#">Ver mais</a>
+  </div>
+  <div class="card">
+    <h3>💡 Dicas Sustentáveis</h3>
+    <p>Confira ideias simples e eficazes para um dia a dia mais verde.</p>
+    <a href="#">Ver dicas</a>
+  </div>
+  <div class="card">
+    <h3>📸 Galeria Sustentável</h3>
+    <p>Explore imagens inspiradoras e compartilhe sua jornada sustentável.</p>
+    <a href="#">Ver galeria</a>
+  </div>
+  <div class="card">
+    <h3>🔄 Reciclagem Criativa</h3>
+    <p>Aprenda como reutilizar materiais e reduzir o desperdício com criatividade.</p>
+    <a href="#">Ver ideias</a>
+  </div>
+  <div class="card">
+    <h3>🌊 Preservação da Água</h3>
+    <p>Descubra métodos para economizar e preservar a água em sua casa e comunidade.</p>
+    <a href="#">Ver soluções</a>
+  </div>
+</section>
+
+<section id="contato" class="cta-section">
+  <h3>Junte-se a nós!</h3>
+  <p>Crie sua conta e faça parte da comunidade que está mudando o mundo.</p>
+  <a href="#">Cadastre-se</a>
+</section>
+
+<section id="feedback" class="feedback-section">
+  <h3>📣 Deixe seu Feedback!</h3>
+  <p>Queremos ouvir sua opinião para melhorarmos ainda mais nosso portal.</p>
+  <form>
+    <textarea placeholder="Escreva aqui seu comentário..." rows="4" required></textarea><br /><br />
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<footer>
+  <div class="footer-left">
+    &copy; 2025 Portal Sustentável. Todos os direitos reservados.
+  </div>
+  <div class="footer-right">
+    <a href="https://api.whatsapp.com/" target="_blank" class="icon whatsapp" title="WhatsApp" aria-label="WhatsApp"></a>
+    <a href="https://www.instagram.com/joao.rodrigues.arruda" target="_blank" class="icon instagram" title="Instagram" aria-label="Instagram"></a>
+  </div>
+</footer>
+
+</body>
+</html>

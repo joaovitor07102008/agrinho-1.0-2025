@@ -1,87 +1,202 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <title>Galeria Simples com CSS</title>
+  <meta charset="UTF-8">
+  <title>Quebra-Cabeça Interativo</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #182848, #4b6cb7);
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
+      justify-content: center;
+      padding: 40px 20px;
       min-height: 100vh;
-      color: #eee;
     }
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-      color: #fff;
-    }
-
-    .gallery-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 15px;
-      width: 80%;
-      max-width: 600px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-      padding: 1rem;
+    .puzzle-container {
+      background: #1e1e1e;
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .gallery-container img {
+      padding: 40px 30px 30px;
       width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
+      max-width: 600px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+
+    .puzzle-container h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    .home-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: none;
+      border: none;
+      font-size: 26px;
       cursor: pointer;
+      color: #ffffffd0;
+      transition: color 0.3s ease;
     }
 
-    .gallery-container img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    .home-button:hover {
+      color: #ffffff;
     }
 
-    .back-button {
-      margin-top: 2rem;
-      background-color: #4b6cb7;
-      color: #fff;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
+    input[type="radio"] {
+      display: none;
+    }
+
+    .slide {
+      display: none;
+      text-align: center;
+    }
+
+    .slide img {
+      max-width: 90%;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.6);
+    }
+
+    .slide p, .slide textarea {
+      margin: 10px auto;
+      width: 85%;
+    }
+
+    .slide textarea {
+      height: 70px;
       border-radius: 10px;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: background-color 0.3s ease;
-      font-weight: 600;
+      border: none;
+      padding: 12px;
+      resize: none;
+      font-size: 15px;
+      font-family: inherit;
+      background: #2e2e2e;
+      color: #fff;
     }
 
-    .back-button:hover {
-      background-color: #182848;
+    .nav {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
     }
+
+    .nav label {
+      background: #3498db;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .nav label:hover {
+      background: #2980b9;
+    }
+
+    .progress {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .progress span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #555;
+      margin: 0 5px;
+      transition: background 0.3s ease;
+    }
+
+    #s1:checked ~ .slide1,
+    #s2:checked ~ .slide2,
+    #s3:checked ~ .slide3,
+    #s4:checked ~ .slide4 {
+      display: block;
+    }
+
+    #s1:checked ~ .progress .p1,
+    #s2:checked ~ .progress .p2,
+    #s3:checked ~ .progress .p3,
+    #s4:checked ~ .progress .p4 {
+      background: #fff;
+    }
+
   </style>
 </head>
 <body>
 
-  <h1>Minha Galeria</h1>
+<div class="puzzle-container">
 
-  <div class="gallery-container">
-    <img src="img/área urbana png 2.png" alt="Foto 1" />
-    <img src="img/img nova urbana.png" alt="Foto 2" />
-    <img src="img/4 png dahora.png" alt="Foto 3" />
-    <img src="img/area rural joao.png" alt="Foto 4" />
+  <!-- Botão Casinha (voltar à página inicial) -->
+  <button class="home-button" onclick="window.location.href='alternativas.html'" title="Voltar à página inicial">
+    🏠
+  </button>
+
+  <h1>🧩 Montando o Quebra-Cabeça</h1>
+
+  <input type="radio" id="s1" name="slide" checked>
+  <input type="radio" id="s2" name="slide">
+  <input type="radio" id="s3" name="slide">
+  <input type="radio" id="s4" name="slide">
+
+  <div class="slide slide1">
+    <img src="https://images.unsplash.com/photo-1605460375648-278bcbd579a6" alt="Imagem 1">
+    <p><strong>Fonte:</strong> Unsplash</p>
+    <textarea placeholder="Descreva a primeira peça..."></textarea>
+    <div class="nav">
+      <label for="s2">➡️ Próxima</label>
+    </div>
   </div>
 
-  <a href="alternativas.html" class="back-button">Voltar para Página Inicial</a>
+  <div class="slide slide2">
+    <img src="https://images.unsplash.com/photo-1602526216034-df9a52c46cb1" alt="Imagem 2">
+    <p><strong>Fonte:</strong> Unsplash</p>
+    <textarea placeholder="Descreva a segunda peça..."></textarea>
+    <div class="nav">
+      <label for="s1">⬅️ Voltar</label>
+      <label for="s3">➡️ Próxima</label>
+    </div>
+  </div>
+
+  <div class="slide slide3">
+    <img src="https://images.unsplash.com/photo-1621587087645-57cfaebbe3e1" alt="Imagem 3">
+    <p><strong>Fonte:</strong> Unsplash</p>
+    <textarea placeholder="Descreva a terceira peça..."></textarea>
+    <div class="nav">
+      <label for="s2">⬅️ Voltar</label>
+      <label for="s4">➡️ Próxima</label>
+    </div>
+  </div>
+
+  <div class="slide slide4">
+    <img src="https://images.unsplash.com/photo-1622495892222-78b745518c4b" alt="Imagem 4">
+    <p><strong>Fonte:</strong> Unsplash</p>
+    <textarea placeholder="Descreva a peça final..."></textarea>
+    <div class="nav">
+      <label for="s3">⬅️ Voltar</label>
+    </div>
+  </div>
+
+  <div class="progress">
+    <span class="p1"></span>
+    <span class="p2"></span>
+    <span class="p3"></span>
+    <span class="p4"></span>
+  </div>
+
+</div>
 
 </body>
 </html>

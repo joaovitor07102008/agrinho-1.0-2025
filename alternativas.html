@@ -1,135 +1,83 @@
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Portal Compacto</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #182848, #4b6cb7);
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-
-    header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1.5rem;
-      background: rgba(0, 0, 0, 0.3);
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    }
-
-    header a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    header a:hover {
-      color: #ffcc00;
-    }
-
-    .menu-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      flex-grow: 1;
-    }
-
-    .menu-box {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-      border-radius: 15px;
-      padding: 1.5rem;
-      text-align: center;
-      color: #fff;
-      font-size: 1.1rem;
-      text-decoration: none;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 160px; /* tamanho dos blocos */
-    }
-
-    .menu-box:hover {
-      background: #4b6cb7;
-      transform: scale(1.1);
-    }
-
-    .menu-box span {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    footer {
-      background: #000; /* Rodapé preto */
-      display: flex;
-      justify-content: flex-end;
-      gap: 2rem;
-      padding: 1rem 2rem;
-    }
-
-    footer a {
-      width: 60px; /* tamanho maior */
-      height: 60px;
-      background-size: cover;
-      transition: transform 0.3s ease;
-    }
-
-    footer a:hover {
-      transform: scale(1.3) rotate(15deg);
-    }
-
-    .whatsapp {
-      background-image: url('https://cdn-icons-png.flaticon.com/512/733/733585.png');
-    }
-
-    .instagram {
-      background-image: url('https://cdn-icons-png.flaticon.com/512/733/733558.png');
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sustentabilidade Urbana e Rural - GIF Realista</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e6f2e6;
+  }
+  body {
+    background: black;
+  }
+  .background-gif {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.85) saturate(1.1);
+  }
+  .header-text {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+    user-select: none;
+    color: #a3d39c;
+  }
+  .btn-container {
+    position: fixed;
+    bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .btn {
+    background: transparent;
+    color: #a3d39c;
+    padding: 12px 32px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-radius: 30px;
+    border: 2px solid #a3d39c;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    user-select: none;
+    letter-spacing: 0.05em;
+    box-shadow: none;
+  }
+  .btn:hover {
+    background-color: #a3d39c;
+    color: #1b3300;
+  }
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #d0f0c0;
+  }
+</style>
 </head>
 <body>
 
-<header>
-  <a href="index.html">🏠 Desenvolvimento sustentável em áreas Urbanas e rurais</a>
-</header>
+<!-- GIF realista aéreo campo + cidade -->
+<img class="background-gif" src="img/зак33.gif" alt="GIF aéreo realista mostrando áreas rurais e urbanas" />
 
-<div class="menu-container">
-  <a href="galeria.html" class="menu-box">
-    <span>🖼️</span>
-    Galeria
+<div class="header-text">Sustentabilidade</div>
+
+<div class="btn-container">
+  <a href="gif.html" class="btn" role="button" aria-label="Acessar página galeria">
+    Acessar Site
   </a>
-  <a href="produto.html" class="menu-box">
-  <span style="font-size: 2.4rem; color: #74ee15; font-weight: bold;">🧩</span>
-  Diferença
-</a>
-  <a href="sustentabilidade.html" class="menu-box">
-    <span>🌎</span>
-    Sustentabilidade
-  </a>
-  <a href="sobremim.html" class="menu-box">
-    <span>🧑</span>
-    Sobre mim
-  </a>
-  
 </div>
-
-<footer>
-  <a href="https://api.whatsapp.com/" target="_blank" class="whatsapp"></a>
-  <a href="https://www.instagram.com/joao.rodrigues.arruda?igsh=Y3lpOXdwOG1wcmh0" target="_blank" class="instagram"></a>
-</footer>
 
 </body>
 </html>
